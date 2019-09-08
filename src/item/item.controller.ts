@@ -12,7 +12,7 @@ export class ItemController {
       return (await this.itemService.createItem(dto));
     }
 
-    @MessagePattern({ cmd: 'findItem' })
+    @MessagePattern({ cmd: 'findItems' })
     async findAll(): Promise<Item[]> {
       return (await this.itemService.findItems())
       .map(v => ({
