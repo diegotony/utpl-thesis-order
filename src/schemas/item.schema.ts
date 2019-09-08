@@ -4,5 +4,6 @@ export const ItemSchema = new mongoose.Schema({
   description: {type: String, required: true},
   price: {type: Number, required: true},
   date: { type: Date, default: Date.now },
+  catalog: {type: mongoose.Schema.Types.ObjectId, ref: 'Catalog'},
  
 });

@@ -16,7 +16,7 @@ export class ItemController {
     async findAll(): Promise<Item[]> {
       return (await this.itemService.findItems())
       .map(v => ({
-        name: v.name, description: v.description, price: v.price,
+        name: v.name, description: v.description, price: v.price, catalog: v.catalog,
       }));
     }
 
