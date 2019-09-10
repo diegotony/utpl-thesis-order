@@ -20,7 +20,6 @@ export class CatalogController {
       }));
     }
 
-
     @MessagePattern({ cmd: 'findCatalog' })
     async findCatalog(idCatalog): Promise<Catalog[]> {
       return (await this.catalogService.findCatalog(idCatalog));
