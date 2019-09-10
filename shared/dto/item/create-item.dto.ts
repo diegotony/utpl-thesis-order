@@ -4,4 +4,3 @@ export class CreateItemDto {
     readonly price: number;
     readonly catalog: string;
   }
-  
