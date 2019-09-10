@@ -8,7 +8,7 @@ import { CatalogService } from './catalog.service';
 export class CatalogController {
     constructor(private readonly catalogService: CatalogService){}
     @MessagePattern({ cmd: 'createCatalog' })
-    async createItem(dto: CreateCatalogDto) {
+    async createCatalog(dto: CreateCatalogDto) {
       return (await this.catalogService.createCatalog(dto));
     }
 
@@ -22,17 +22,17 @@ export class CatalogController {
 
 
     @MessagePattern({ cmd: 'findCatalog' })
-    async findItem(idCatalog): Promise<Catalog[]> {
+    async findCatalog(idCatalog): Promise<Catalog[]> {
       return (await this.catalogService.findCatalog(idCatalog));
     }
 
     @MessagePattern({ cmd: 'editCatalog' })
-    async editItem(data) {
+    async editCatalog(data) {
       return (await this.catalogService.editCatalog(data));
     }
 
     @MessagePattern({ cmd: 'deleteCatalog' })
-    async deleteUser(idCatalog): Promise<Catalog[]> {
+    async deleteCatalog(idCatalog): Promise<Catalog[]> {
       return (await this.catalogService.deleteCatalog(idCatalog));
     }
 }
