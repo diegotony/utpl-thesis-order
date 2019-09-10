@@ -27,7 +27,7 @@ export class TableController {
 
     @MessagePattern({ cmd: 'editTable' })
     async editTable(data) {
-        return (await this.tableService.editTable.(data));
+        return (await this.tableService.editTable(data));
     }
 
     @MessagePattern({ cmd: 'deleteTable' })

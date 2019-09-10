@@ -9,7 +9,7 @@ export class MenuService {
     constructor(@InjectModel('Menu') private readonly menuModel: Model<Menu>){}
 
     async createMenu(createMenuDto: CreateMenuDto): Promise<Menu> {
-        const createdMenu = new this.MenuModel(createMenuDto);
+        const createdMenu = new this.menuModel(createMenuDto);
         return await createdMenu.save();
       }
       async findMenus(): Promise<Menu[]> {

@@ -28,7 +28,7 @@ export class PickController {
 
     @MessagePattern({ cmd: 'editPick' })
     async editPick(data) {
-        return (await this.pickService.editPick.(data));
+        return (await this.pickService.editPick(data));
     }
 
     @MessagePattern({ cmd: 'deletePick' })

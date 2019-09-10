@@ -27,7 +27,7 @@ export class MenuController {
 
     @MessagePattern({ cmd: 'editMenu' })
     async editMenu(data) {
-        return (await this.menuService.editMenu.(data));
+        return (await this.menuService.editMenu(data));
     }
 
     @MessagePattern({ cmd: 'deleteMenu' })
@@ -35,4 +35,4 @@ export class MenuController {
         return (await this.menuService.deleteMenu(idMenu));
     }
 }
-}
+
