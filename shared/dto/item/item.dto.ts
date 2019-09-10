@@ -3,4 +3,5 @@ export class Item {
     readonly description: string;
     readonly price: number;
     readonly catalog: string;
-  }
+
+}
