@@ -1,0 +1,37 @@
+version: '3'
+services:
+  mongo:
+    image: 'mongo'
+    ports:
+      - "27017:27017"
+    volumes:
+      - data-db:/data/db
+
+    networks:
+      - order-service-net
+  redis_db:
+    image: 'redis'
+    ports:
+      - "6379:6379"
+    networks:
+      - order-service-net
+  order-service:
+    image: diegotony/order-service:1
+    container_name: order-service
+    environment:
+      - NODE_ENV=prod
+      - PORT=1396
+      - MONGO_URI=mongodb://localhost/orderprod
+    depends_on:
+      - mongo
+      - redis_db
+    links:
+      - mongo
+    networks:
+      - order-service-net
+
+networks:
+  order-service-net:
+    external: true
+volumes:
+  data-db:

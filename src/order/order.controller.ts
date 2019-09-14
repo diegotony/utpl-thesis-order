@@ -28,7 +28,7 @@ export class OrderController {
 
     @MessagePattern({ cmd: 'editOrder' })
     async editOrder(data) {
-        return (await this.orderService.editOrder.(data));
+        return (await this.orderService.editOrder(data));
     }
 
     @MessagePattern({ cmd: 'deleteOrder' })
