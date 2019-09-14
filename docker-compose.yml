@@ -1,37 +1,41 @@
 version: '3'
 services:
-  mongo:
+  mongo_db:
     image: 'mongo'
+    container_name: mongo_db
+    restart: always
     ports:
       - "27017:27017"
     volumes:
       - data-db:/data/db
-
     networks:
-      - order-service-net
+      - web-net
   redis_db:
-    image: 'redis'
+    image: 'redis:alpine'
+    container_name: redis_db
+    restart: always
     ports:
       - "6379:6379"
     networks:
-      - order-service-net
+      - web-net
   order-service:
-    image: diegotony/order-service:1
-    container_name: order-service
+    restart: always
+    build: ./
     environment:
-      - NODE_ENV=prod
-      - PORT=1396
-      - MONGO_URI=mongodb://localhost/orderprod
+      - MONGO_URI=mongodb://mongo_db:27017/order
+      - REDIS_URI=redis://redis_db:6379
     depends_on:
-      - mongo
+      - mongo_db
       - redis_db
     links:
-      - mongo
+      - mongo_db
+      - redis_db
     networks:
-      - order-service-net
+      - web-net
 
-networks:
-  order-service-net:
-    external: true
 volumes:
   data-db:
+
+networks:
+  web-net:
+    driver: bridge
