@@ -1,8 +1,8 @@
-sudo: 'required'
+sudo: required
 services:
   - 'docker'
 before_install:
-  - '.travis/main.sh'
+  - './.travis/main.sh'
 
 script:
   - 'make test'
