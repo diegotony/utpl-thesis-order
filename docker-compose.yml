@@ -20,7 +20,8 @@ services:
       - web-net
   order-service:
     restart: always
-    build: ./
+    image: diegotony/order-micro:latest
+    # build: ./
     environment:
       - MONGO_URI=mongodb://mongo_db:27017/order
       - REDIS_URI=redis://redis_db:6379
