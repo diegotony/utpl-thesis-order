@@ -1,5 +1,4 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
+import { Controller, Get, Post, Put, Delete, Param, HttpCode, Body } from '@nestjs/common';
 import { CreateItemDto} from '../../shared/dto/item/create-item.dto';
 import { Item} from '../../shared/dto/item/item.dto';
 import { ItemService } from './item.service';
@@ -7,12 +6,15 @@ import { ItemService } from './item.service';
 @Controller('item')
 export class ItemController {
     constructor(private readonly itemService: ItemService) { }
-    @MessagePattern({ cmd: 'createItem' })
-    async createItem(dto: CreateItemDto) {
+    
+    @Post()
+    @HttpCode(204)
+    async createItem(@Body() dto: CreateItemDto) {
       return (await this.itemService.createItem(dto));
     }
 
-    @MessagePattern({ cmd: 'findItems' })
+    @Get()
+    @HttpCode(200)
     async findAll(): Promise<Item[]> {
       return (await this.itemService.findItems())
       .map(v => ({
@@ -20,19 +22,20 @@ export class ItemController {
       }));
     }
 
-    @MessagePattern({ cmd: 'findItem' })
-    async findItem(idItem): Promise<Item[]> {
-      return (await this.itemService.findItem(idItem));
+    @Get(':id')
+    @HttpCode(200)
+    async findItem(@Param() params): Promise<Item[]> {
+      return (await this.itemService.findItem(params.id));
     }
 
-    @MessagePattern({ cmd: 'editItem' })
-    async editItem(data) {
-      return (await this.itemService.editItem(data));
+    @Put(':id')
+    async editItem(@Param() params, @Body() dto: CreateItemDto) {
+      return (await this.itemService.editItem(params.id, dto));
     }
 
-    @MessagePattern({ cmd: 'deleteItem' })
-    async deleteUser(idItem): Promise<Item[]> {
-      return (await this.itemService.deleteItem(idItem));
+    @Delete(':id')
+    async deleteUser(@Param() params): Promise<Item[]> {
+      return (await this.itemService.deleteItem(params.id));
     }
 
 }

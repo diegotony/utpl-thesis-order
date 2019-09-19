@@ -21,9 +21,7 @@ export class CatalogService {
       async deleteCatalog(idCatalog: string): Promise<Catalog[]> {
         return await this.catalogModel.findByIdAndRemove(idCatalog);
       }
-      async editCatalog(data) {
-        const id = data[0].id;
-        const dto = data[0].dto;
-        return await this.catalogModel.findByIdAndUpdate(id, dto, {new: true, runValidators: true});
+      async editCatalog(idCatalog: string, dto: CreateCatalogDto) {
+        return await this.catalogModel.findByIdAndUpdate(idCatalog, dto, {new: true, runValidators: true});
       }
 }

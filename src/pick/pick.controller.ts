@@ -1,19 +1,20 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, HttpCode, Body } from '@nestjs/common';
 import { PickService } from './pick.service';
 import { CreatePickDto } from 'shared/dto/pick/create-pick.dto';
 import { Pick } from 'shared/dto/pick/pick.dto';
-import { MessagePattern } from '@nestjs/microservices';
 
 @Controller('pick')
 export class PickController {
     constructor(private readonly pickService: PickService){}
 
-    @MessagePattern({ cmd: 'createPick' })
+    @Post()
+    @HttpCode(204)
     async createPick(dto: CreatePickDto) {
         return (await this.pickService.createPick(dto));
     }
 
-    @MessagePattern({ cmd: 'findPicks' })
+    @Get()
+    @HttpCode(200)
     async findAll(): Promise<Pick[]> {
         return (await this.pickService.findPicks())
             .map(v => ({
@@ -21,19 +22,20 @@ export class PickController {
             }));
     }
 
-    @MessagePattern({ cmd: 'findPick' })
-    async findPick(idPick): Promise<Pick> {
-        return (await this.pickService.findPick(idPick));
+    @Get(':id')
+    @HttpCode(200)
+    async findPick(@Param() params): Promise<Pick> {
+        return (await this.pickService.findPick(params.id));
     }
 
-    @MessagePattern({ cmd: 'editPick' })
-    async editPick(data) {
-        return (await this.pickService.editPick(data));
+    @Put(':id')
+    async editPick(@Param() params, @Body() dto: CreatePickDto) {
+        return (await this.pickService.editPick(params.id, dto));
     }
 
-    @MessagePattern({ cmd: 'deletePick' })
-    async deletePick(idPick): Promise<Pick[]> {
-        return (await this.pickService.deletePick(idPick));
+    @Delete(':id')
+    async deletePick(@Param() params): Promise<Pick[]> {
+        return (await this.pickService.deletePick(params.id));
     }
 
 }

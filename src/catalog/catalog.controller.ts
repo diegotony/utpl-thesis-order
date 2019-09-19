@@ -1,5 +1,4 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
+import { Controller, Get, Post, Put, Delete, Param, HttpCode, Body } from '@nestjs/common';
 import {CreateCatalogDto} from '../../shared/dto/catalog/create-catalog.dto';
 import {Catalog} from '../../shared/dto/catalog/catalog.dto';
 import { CatalogService } from './catalog.service';
@@ -7,12 +6,14 @@ import { CatalogService } from './catalog.service';
 @Controller('catalog')
 export class CatalogController {
     constructor(private readonly catalogService: CatalogService){}
-    @MessagePattern({ cmd: 'createCatalog' })
-    async createCatalog(dto: CreateCatalogDto) {
+    @Post()
+    @HttpCode(204)
+    async createCatalog(@Body() dto: CreateCatalogDto) {
       return (await this.catalogService.createCatalog(dto));
     }
 
-    @MessagePattern({ cmd: 'findCatalogs' })
+    @Get()
+    @HttpCode(200)
     async findAll(): Promise<Catalog[]> {
       return (await this.catalogService.findCatalogs())
       .map(v => ({
@@ -20,18 +21,19 @@ export class CatalogController {
       }));
     }
 
-    @MessagePattern({ cmd: 'findCatalog' })
-    async findCatalog(idCatalog): Promise<Catalog[]> {
-      return (await this.catalogService.findCatalog(idCatalog));
+    @Get(':id')
+    @HttpCode(200)
+    async findCatalog(@Param() params): Promise<Catalog[]> {
+      return (await this.catalogService.findCatalog(params.id));
     }
 
-    @MessagePattern({ cmd: 'editCatalog' })
-    async editCatalog(data) {
-      return (await this.catalogService.editCatalog(data));
+    @Put(':id')
+    async editCatalog(@Param() params, @Body() dto: CreateCatalogDto) {
+      return (await this.catalogService.editCatalog(params.id, dto));
     }
 
-    @MessagePattern({ cmd: 'deleteCatalog' })
-    async deleteCatalog(idCatalog): Promise<Catalog[]> {
-      return (await this.catalogService.deleteCatalog(idCatalog));
+    @Delete(':id')
+    async deleteCatalog(@Param() params): Promise<Catalog[]> {
+      return (await this.catalogService.deleteCatalog(params.id));
     }
 }

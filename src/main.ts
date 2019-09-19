@@ -1,15 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Transport } from '@nestjs/microservices';
 import config from './config/config';
 
 async function bootstrap() {
-  const app = await NestFactory.createMicroservice(AppModule, {
-    transport: Transport.REDIS,
-    options: {
-      url: `${config.REDIS_URI}`,
-    },
-  });
-  await app.listen(() => console.log(`Order-Microservice `));
+  const app = await NestFactory.create(AppModule);
+  await app.listen(config.PORT);
 }
 bootstrap();

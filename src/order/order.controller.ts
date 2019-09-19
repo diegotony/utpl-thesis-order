@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, HttpCode, Body } from '@nestjs/common';
 import { OrderService } from './order.service';
 import { CreateOrderDto } from 'shared/dto/order/create-order.dto';
 import { Order } from 'shared/dto/order/order.dto';
@@ -8,12 +8,14 @@ import { MessagePattern } from '@nestjs/microservices';
 export class OrderController {
     constructor(private readonly orderService: OrderService) {}
 
-    @MessagePattern({ cmd: 'createOrder' })
-    async createPick(dto: CreateOrderDto) {
+    @Post()
+    @HttpCode(204)
+    async createPick(@Body() dto: CreateOrderDto) {
         return (await this.orderService.createOrder(dto));
     }
 
-    @MessagePattern({ cmd: 'findOrders' })
+    @Get()
+    @HttpCode(200)
     async findAll(): Promise<Order[]> {
         return (await this.orderService.findOrders())
             .map(v => ({
@@ -21,18 +23,19 @@ export class OrderController {
             }));
     }
 
-    @MessagePattern({ cmd: 'findOrder' })
-    async findOrder(idOrder): Promise<Order> {
-        return (await this.orderService.findOrder(idOrder));
+    @Get(':id')
+    @HttpCode(200)
+    async findOrder( @Param() params ): Promise<Order> {
+        return (await this.orderService.findOrder(params.id));
     }
 
-    @MessagePattern({ cmd: 'editOrder' })
-    async editOrder(data) {
-        return (await this.orderService.editOrder(data));
+    @Put(':id')
+    async editOrder(@Param() params, @Body() dto: CreateOrderDto) {
+        return (await this.orderService.editOrder(params.id, dto));
     }
 
-    @MessagePattern({ cmd: 'deleteOrder' })
-    async deleteOrder(idOrder): Promise<Order[]> {
-        return (await this.orderService.deleteOrder(idOrder));
+    @Delete(':id')
+    async deleteOrder(@Param() params): Promise<Order[]> {
+        return (await this.orderService.deleteOrder(params.id));
     }
 }

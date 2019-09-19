@@ -21,9 +21,7 @@ export class ItemService {
       async deleteItem(idItem: string): Promise<Item[]> {
         return await this.ItemModel.findByIdAndRemove(idItem);
       }
-      async editItem(data) {
-        const id = data[0].id;
-        const dto = data[0].dto;
-        return await this.ItemModel.findByIdAndUpdate(id, dto, {new: true, runValidators: true});
+      async editItem(idItem: string, dto: CreateItemDto) {
+        return await this.ItemModel.findByIdAndUpdate(idItem, dto, {new: true, runValidators: true});
       }
 }

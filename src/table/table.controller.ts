@@ -1,18 +1,19 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, HttpCode, Body } from '@nestjs/common';
 import { TableService } from './table.service';
 import { CreateTableDto } from '../../shared/dto/table/create-table.dto';
 import { Table } from '../../shared/dto/table/table.dto';
-import { MessagePattern } from '@nestjs/microservices';
 
 @Controller('table')
 export class TableController {
     constructor(private readonly tableService: TableService) { }
-    @MessagePattern({ cmd: 'createTable' })
-    async createTable(dto: CreateTableDto) {
+    @Post()
+    @HttpCode(204)
+    async createTable( @Body() dto: CreateTableDto) {
         return (await this.tableService.createTable(dto));
     }
 
-    @MessagePattern({ cmd: 'findTables' })
+    @Get()
+    @HttpCode(200)
     async findAll(): Promise<Table[]> {
         return (await this.tableService.findTables())
             .map(v => ({
@@ -20,18 +21,19 @@ export class TableController {
             }));
     }
 
-    @MessagePattern({ cmd: 'findTable' })
-    async findTable(idTable): Promise<Table[]> {
-        return (await this.tableService.findTable(idTable));
+    @Get(':id')
+    @HttpCode(200)
+    async findTable( @Param() params ): Promise<Table[]> {
+        return (await this.tableService.findTable(params.id));
     }
 
-    @MessagePattern({ cmd: 'editTable' })
-    async editTable(data) {
-        return (await this.tableService.editTable(data));
+    @Put(':id')
+    async editTable(@Param() params, @Body() dto: CreateTableDto): Promise<Table> {
+        return (await this.tableService.editTable(params.id, dto));
     }
 
-    @MessagePattern({ cmd: 'deleteTable' })
-    async deleteTable(idTable): Promise<Table[]> {
+    @Delete(':id')
+    async deleteTable(@Param() idTable): Promise<Table[]> {
         return (await this.tableService.deleteTable(idTable));
     }
 }

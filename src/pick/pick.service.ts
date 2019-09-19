@@ -18,15 +18,11 @@ export class PickService {
 
     async findPick(idPick: string): Promise<Pick> {
         return await this.pickModel.findById(idPick).exec();
-
     }
-
     async deletePick(idPick: string): Promise<Pick[]> {
         return await this.pickModel.findByIdAndRemove(idPick);
     }
-    async editPick(data) {
-        const id = data[0].id;
-        const dto = data[0].dto;
-        return await this.pickModel.findByIdAndUpdate(id, dto, { new: true, runValidators: true });
+    async editPick(idPick: string, dto: CreatePickDto) {
+        return await this.pickModel.findByIdAndUpdate(idPick, dto, { new: true, runValidators: true });
     }
 }

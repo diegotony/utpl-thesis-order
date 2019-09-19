@@ -21,9 +21,7 @@ export class MenuService {
       async deleteMenu(idMenu: string): Promise<Menu[]> {
         return await this.menuModel.findByIdAndRemove(idMenu);
       }
-      async editMenu(data) {
-        const id = data[0].id;
-        const dto = data[0].dto;
-        return await this.menuModel.findByIdAndUpdate(id, dto, { new: true, runValidators: true });
+      async editMenu(idMenu: string, dto: CreateMenuDto) {
+        return await this.menuModel.findByIdAndUpdate(idMenu, dto, { new: true, runValidators: true });
       }
 }

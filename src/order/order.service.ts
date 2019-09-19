@@ -18,15 +18,12 @@ export class OrderService {
 
     async findOrder(idOrder: string): Promise<Order> {
         return await this.orderModel.findById(idOrder).exec();
-
     }
 
     async deleteOrder(idOrder: string): Promise<Order[]> {
         return await this.orderModel.findByIdAndRemove(idOrder);
     }
-    async editOrder(data) {
-        const id = data[0].id;
-        const dto = data[0].dto;
-        return await this.orderModel.findByIdAndUpdate(id, dto, { new: true, runValidators: true });
+    async editOrder(idOrder: string, dto: CreateOrderDto) {
+        return await this.orderModel.findByIdAndUpdate(idOrder, dto, { new: true, runValidators: true });
     }
 }

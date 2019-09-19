@@ -21,9 +21,7 @@ export class TableService {
   async deleteTable(idTable: string): Promise<Table[]> {
     return await this.tableModel.findByIdAndRemove(idTable);
   }
-  async editTable(data) {
-    const id = data[0].id;
-    const dto = data[0].dto;
-    return await this.tableModel.findByIdAndUpdate(id, dto, { new: true, runValidators: true });
+  async editTable(idTable: string, dto: CreateTableDto) {
+    return await this.tableModel.findByIdAndUpdate(idTable, dto, { new: true, runValidators: true });
   }
 }
