@@ -2,7 +2,7 @@ sudo: required
 services:
   - 'docker'
 before_install:
-  - 'chmod +x build.sh'
+  - 'chmod +x travis/main.sh'
   - './.travis/main.sh'
 
 script:
