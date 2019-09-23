@@ -5,6 +5,7 @@ import { CatalogModule } from './catalog/catalog.module';
 import { TableModule } from './table/table.module';
 import { PickModule } from './pick/pick.module';
 import { MenuModule } from './menu/menu.module';
+import {MongoExceptionFilter } from './exceptions/exception-mongo.service';
 import config from './config/config';
 
 @Module({

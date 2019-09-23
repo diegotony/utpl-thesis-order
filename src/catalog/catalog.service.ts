@@ -10,7 +10,7 @@ export class CatalogService {
 
     async createCatalog(createCatalogDto: CreateCatalogDto): Promise<Catalog> {
         const createdCatalog = new this.catalogModel(createCatalogDto);
-        return await createdCatalog.save();
+        return await  createdCatalog.save();
       }
       async findCatalogs(): Promise<Catalog[]> {
         return await this.catalogModel.find().exec();
