@@ -15,16 +15,16 @@ export class ItemController {
 
     @Get()
     @HttpCode(200)
-    async findAll(): Promise<Item[]> {
-      return (await this.itemService.findItems())
-      .map(v => ({
-        name: v.name, description: v.description, price: v.price, catalog: v.catalog,
-      }));
+    async findAll(): Promise<any[]> {
+      return (await this.itemService.findItems());
+      // .map(v => ({
+      //   name: v.name, description: v.description, price: v.price, catalog: v.catalog,
+      // }));
     }
 
     @Get(':id')
     @HttpCode(200)
-    async findItem(@Param() params): Promise<Item[]> {
+    async findItem(@Param() params): Promise<any[]> {
       return (await this.itemService.findItem(params.id));
     }
 

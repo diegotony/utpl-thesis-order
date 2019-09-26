@@ -14,16 +14,16 @@ export class CatalogController {
 
     @Get()
     @HttpCode(200)
-    async findAll(): Promise<Catalog[]> {
-      return (await this.catalogService.findCatalogs())
-      .map(v => ({
-        _id: v._id, name: v.name,
-      }));
+    async findAll(): Promise<any[]> {
+      return (await this.catalogService.findCatalogs());
+      // .map(v => ({
+      //   _id: v._id, name: v.name,
+      // }));
     }
 
     @Get(':id')
     @HttpCode(200)
-    async findCatalog(@Param() params): Promise<Catalog[]> {
+    async findCatalog(@Param() params): Promise<any[]> {
       return (await this.catalogService.findCatalog(params.id));
     }
 

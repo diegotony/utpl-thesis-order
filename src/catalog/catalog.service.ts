@@ -12,11 +12,11 @@ export class CatalogService {
         const createdCatalog = new this.catalogModel(createCatalogDto);
         return await  createdCatalog.save();
       }
-      async findCatalogs(): Promise<Catalog[]> {
-        return await this.catalogModel.find().exec();
+      async findCatalogs(): Promise<any[]> {
+        return await this.catalogModel.find({}).populate('item').exec();
       }
-      async findCatalog(idCatalog: string): Promise<Catalog[]> {
-        return await this.catalogModel.findById(idCatalog).exec();
+      async findCatalog(idCatalog: string): Promise<any[]> {
+        return await this.catalogModel.findById(idCatalog).populate('item').exec();
       }
       async deleteCatalog(idCatalog: string): Promise<Catalog[]> {
         return await this.catalogModel.findByIdAndRemove(idCatalog);

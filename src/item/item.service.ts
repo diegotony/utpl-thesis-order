@@ -12,11 +12,11 @@ export class ItemService {
         const createdItem = new this.ItemModel(createItemDto);
         return await createdItem.save();
       }
-      async findItems(): Promise<Item[]> {
-        return await this.ItemModel.find().exec();
+      async findItems(): Promise<any[]> {
+        return await this.ItemModel.find({}).populate('catalog').exec();
       }
-      async findItem(idItem: string): Promise<Item[]> {
-        return await this.ItemModel.findById(idItem).exec();
+      async findItem(idItem: string): Promise<any[]> {
+        return await this.ItemModel.findById(idItem).populate('catalog').exec();
       }
       async deleteItem(idItem: string): Promise<Item[]> {
         return await this.ItemModel.findByIdAndRemove(idItem);
