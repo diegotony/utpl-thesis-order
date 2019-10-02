@@ -16,5 +16,6 @@ after_success:
     fi
 
 # don't notify me when things fail
+
 notifications:
   email: false
