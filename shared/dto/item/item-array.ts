@@ -1,4 +1,4 @@
-export class Item {
+export class ItemArray {
     readonly _id: string;
     readonly name: string;
     readonly description: string;

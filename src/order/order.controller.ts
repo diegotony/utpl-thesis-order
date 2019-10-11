@@ -1,8 +1,7 @@
 import { Controller, Get, Post, Put, Delete, Param, HttpCode, Body, UseFilters } from '@nestjs/common';
 import { OrderService } from './order.service';
-import { CreateOrderDto } from 'shared/dto/order/create-order.dto';
-import { Order } from 'shared/dto/order/order.dto';
-import { MongoExceptionFilter } from 'src/exceptions/exception-mongo.service';
+import { CreateOrderDto } from '../../shared/dto/order/create-order.dto';
+import { Order } from '../../shared/dto/order/order.dto';
 
 @Controller('order')
 export class OrderController {
@@ -10,7 +9,6 @@ export class OrderController {
 
     @Post()
     @HttpCode(201)
-    @UseFilters(MongoExceptionFilter)
     async createPick(@Body() dto: CreateOrderDto) {
         return (await this.orderService.createOrder(dto));
     }
@@ -19,9 +17,6 @@ export class OrderController {
     @HttpCode(200)
     async findAll(): Promise<Order[]> {
         return (await this.orderService.findOrders())
-            .map(v => ({
-                _id: v._id, menu: v.menu, table: v.table, user: v.user, status: v.status
-            }));
     }
 
     @Get(':id')
@@ -32,7 +27,6 @@ export class OrderController {
 
     @Put(':id')
     @HttpCode(202)
-    @UseFilters(MongoExceptionFilter)
     async editOrder(@Param() params, @Body() dto: CreateOrderDto) {
         return (await this.orderService.editOrder(params.id, dto));
     }
