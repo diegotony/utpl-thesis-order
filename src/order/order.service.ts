@@ -1,5 +1,5 @@
 import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Order } from 'shared/dto/order/order.dto';
 import { CreateOrderDto } from 'shared/dto/order/create-order.dto';
@@ -9,8 +9,16 @@ export class OrderService {
     constructor(@InjectModel('Order') private readonly orderModel: Model<Order>) { }
 
     async createOrder(createOrderDto: CreateOrderDto): Promise<Order> {
-        const createdOrder = new this.orderModel(createOrderDto);
-        return await createdOrder.save();
+        try {
+            const createdOrder = new this.orderModel(createOrderDto);
+            if (!createdOrder){
+                throw new HttpException('Upps error ..', HttpStatus.BAD_REQUEST)
+            }
+            return await createdOrder.save();
+        } catch (error) {
+            throw new HttpException(`Callback getUser ${error.message}`, HttpStatus.BAD_REQUEST);
+        }
+       
     }
     async findOrders(): Promise<Order[]> {
         return await this.orderModel.find().exec();

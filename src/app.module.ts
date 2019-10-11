@@ -7,11 +7,12 @@ import { TableModule } from './table/table.module';
 
 import config from './config/config';
 import { OrderModule } from './order/order.module';
+import { BillingService } from './services/billing/billing.service';
 
 @Module({
 imports: [MongooseModule.forRoot(`${config.MONGO_URI}`), ItemModule, CatalogModule, TableModule,OrderModule
 ],
   controllers: [],
-  providers: [],
+  providers: [BillingService],
 })
 export class AppModule {}

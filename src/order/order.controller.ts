@@ -9,7 +9,7 @@ export class OrderController {
 
     @Post()
     @HttpCode(201)
-    async createPick(@Body() dto: CreateOrderDto) {
+    async createOrder(@Body() dto: CreateOrderDto) {
         return (await this.orderService.createOrder(dto));
     }
 
