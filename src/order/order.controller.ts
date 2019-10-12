@@ -2,10 +2,11 @@ import { Controller, Get, Post, Put, Delete, Param, HttpCode, Body, UseFilters }
 import { OrderService } from './order.service';
 import { CreateOrderDto } from '../../shared/dto/order/create-order.dto';
 import { Order } from '../../shared/dto/order/order.dto';
+import { BillingService } from '../../src/services/billing/billing.service';
 
 @Controller('order')
 export class OrderController {
-    constructor(private readonly orderService: OrderService) {}
+    constructor(private readonly orderService: OrderService) { }
 
     @Post()
     @HttpCode(201)
@@ -21,7 +22,7 @@ export class OrderController {
 
     @Get(':id')
     @HttpCode(200)
-    async findOrder( @Param() params ): Promise<Order> {
+    async findOrder(@Param() params): Promise<Order> {
         return (await this.orderService.findOrder(params.id));
     }
 
