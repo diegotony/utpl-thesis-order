@@ -13,6 +13,6 @@ import { BillingService } from './services/billing/billing.service';
 imports: [MongooseModule.forRoot(`${config.MONGO_URI}`), ItemModule, CatalogModule, TableModule,OrderModule
 ],
   controllers: [],
-  providers: [BillingService],
+  providers: [],
 })
 export class AppModule {}

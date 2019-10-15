@@ -1,6 +1,7 @@
 
 
 export class CreateOrderDto {
+    readonly _id: string;
     readonly table: string;
     readonly id_user: string;
     readonly ids: Array<String>;
