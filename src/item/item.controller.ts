@@ -22,6 +22,7 @@ export class ItemController {
       // }));
     }
 
+    
     @Get(':id')
     @HttpCode(200)
     async findItem(@Param() params): Promise<any[]> {
