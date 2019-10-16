@@ -3,7 +3,7 @@ import { MenuService } from './menu.service';
 import { CreateMenuDto } from '../../shared/dto/menu/create-menu.dto';
 import { Menu } from 'shared/dto/menu/menu.dto';
 
-@Controller('menu')
+@Controller('api/order/v1/menu')
 export class MenuController {
     constructor(private readonly menuService: MenuService) { }
 
