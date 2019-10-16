@@ -1,7 +1,7 @@
 import { Controller, Get, HttpCode } from "@nestjs/common";
 import { AppService } from "./app.service";
 
-@Controller('api/order/v1')
+@Controller()
 export class AppController{
   constructor(private readonly appService: AppService){} 
   @Get()

@@ -3,7 +3,7 @@ import { TableService } from './table.service';
 import { CreateTableDto } from '../../shared/dto/table/create-table.dto';
 import { Table } from '../../shared/dto/table/table.dto';
 
-@Controller('api/order/v1/table')
+@Controller('table')
 export class TableController {
     constructor(private readonly tableService: TableService) { }
     @Post()

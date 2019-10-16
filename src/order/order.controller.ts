@@ -4,7 +4,7 @@ import { CreateOrderDto } from '../../shared/dto/order/create-order.dto';
 import { Order } from '../../shared/dto/order/order.dto';
 import { BillingService } from '../../src/services/billing/billing.service';
 
-@Controller('api/order/v1/order')
+@Controller('order')
 export class OrderController {
     constructor(private readonly orderService: OrderService) { }
 

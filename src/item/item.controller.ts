@@ -3,7 +3,7 @@ import { CreateItemDto} from '../../shared/dto/item/create-item.dto';
 import { Item} from '../../shared/dto/item/item.dto';
 import { ItemService } from './item.service';
 
-@Controller('api/order/v1/item')
+@Controller('item')
 export class ItemController {
     constructor(private readonly itemService: ItemService) { }
     
