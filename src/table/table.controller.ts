@@ -2,6 +2,7 @@ import { Controller, Get, Post, Put, Delete, Param, HttpCode, Body } from '@nest
 import { TableService } from './table.service';
 import { CreateTableDto } from '../../shared/dto/table/create-table.dto';
 import { Table } from '../../shared/dto/table/table.dto';
+import { ApiImplicitParam } from '@nestjs/swagger';
 
 @Controller('table')
 export class TableController {
@@ -22,17 +23,20 @@ export class TableController {
     }
 
     @Get(':id')
+    @ApiImplicitParam({name:'id'})
     @HttpCode(200)
     async findTable( @Param() params ): Promise<Table[]> {
         return (await this.tableService.findTable(params.id));
     }
 
     @Put(':id')
+    @ApiImplicitParam({name:'id'})
     async editTable(@Param() params, @Body() dto: CreateTableDto): Promise<Table> {
         return (await this.tableService.editTable(params.id, dto));
     }
 
     @Delete(':id')
+    @ApiImplicitParam({name:'id'})
     async deleteTable(@Param() idTable): Promise<Table[]> {
         return (await this.tableService.deleteTable(idTable));
     }
