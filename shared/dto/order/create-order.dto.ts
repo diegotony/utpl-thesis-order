@@ -9,11 +9,13 @@ export class CreateOrderDto {
     @ApiModelProperty()
     readonly id_user: string;
     @ApiModelProperty()
-    readonly ids: Array<String>;
+    // readonly ids: Array<String>;
+    // @ApiModelProperty()
+    // readonly prices: Array<Number>;
+    // @ApiModelProperty()
+    // readonly quantitys: Array<Number>;
+    // @ApiModelProperty()
+    // readonly date: Date;
     @ApiModelProperty()
-    readonly prices: Array<Number>;
-    @ApiModelProperty()
-    readonly quantitys: Array<Number>;
-    @ApiModelProperty()
-    readonly date: Date;
+    readonly order: Array<any>;
 }
