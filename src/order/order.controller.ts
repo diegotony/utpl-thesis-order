@@ -2,7 +2,6 @@ import { Controller, Get, Post, Put, Delete, Param, HttpCode, Body, UseFilters }
 import { OrderService } from './order.service';
 import { CreateOrderDto } from '../../shared/dto/order/create-order.dto';
 import { Order } from '../../shared/dto/order/order.dto';
-import { BillingService } from '../../src/services/billing/billing.service';
 import { ApiImplicitParam } from '@nestjs/swagger';
 
 @Controller('order')

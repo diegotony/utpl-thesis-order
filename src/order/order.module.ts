@@ -7,6 +7,6 @@ import { BillingService } from '../../src/services/billing/billing.service';
 @Module({
     imports: [HttpModule,MongooseModule.forFeature([{ name: 'Order', schema: OrderSchema }])],
     controllers: [OrderController],
-    providers: [OrderService,BillingService],
+    providers: [OrderService],
 })
 export class OrderModule {}

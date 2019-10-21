@@ -1,15 +1,13 @@
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { ItemModule } from './item/item.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CatalogModule } from './catalog/catalog.module';
 import { TableModule } from './table/table.module';
-
-
 import config from './config/config';
-import { OrderModule } from './order/order.module';
-import { BillingService } from './services/billing/billing.service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { OrderModule } from './order/order.module';
+import { LoggerMiddleware } from './logger.middleware';
 
 
 @Module({
@@ -18,4 +16,4 @@ imports: [MongooseModule.forRoot(`${config.MONGO_URI}`), ItemModule, CatalogModu
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule{}

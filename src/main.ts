@@ -8,7 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   let cors = require('cors');
   app.use(cors());
-  app.use(helmet());
+  // app.use(helmet());
 
   const options = new DocumentBuilder()
     .setTitle('Order Service')
