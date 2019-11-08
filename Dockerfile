@@ -1,4 +1,4 @@
-FROM node:10 
+FROM node:carbon-alpine 
 # FROM node:carbon-alpine 
 MAINTAINER diegotony
 COPY . /app

@@ -1,4 +1,4 @@
-IMAGE := diegotony/orden-micro:travis
+IMAGE := diegotony/orden-micro:k8s-alpine
 
 test:
 	true
