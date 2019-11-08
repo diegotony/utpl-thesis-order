@@ -11,7 +11,7 @@ import { LoggerMiddleware } from './logger.middleware';
 
 
 @Module({
-imports: [MongooseModule.forRoot(`${config.MONGO_URI}`), ItemModule, CatalogModule, TableModule,OrderModule
+imports: [MongooseModule.forRoot("mongodb://"+config.MONGO_HOST+"/"+config.MONGO_DB, {useNewUrlParser: true }), ItemModule, CatalogModule, TableModule,OrderModule
 ],
   controllers: [AppController],
   providers: [AppService],
