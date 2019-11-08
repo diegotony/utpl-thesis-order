@@ -1,4 +1,4 @@
-IMAGE := diegotony/orden-micro:k8s-alpine
+IMAGE := diegotony/orden-micro:k8s
 
 test:
 	true
