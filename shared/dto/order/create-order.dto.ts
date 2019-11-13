@@ -7,4 +7,7 @@ export class CreateOrderDto {
     id_user: string;
     @ApiModelProperty()
     order: Array<any>;
+    @ApiModelProperty()
+    pago: string;
+
 }
