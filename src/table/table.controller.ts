@@ -3,13 +3,15 @@ import { TableService } from './table.service';
 import { CreateTableDto } from '../../shared/dto/table/create-table.dto';
 import { Table } from '../../shared/dto/table/table.dto';
 import { ApiImplicitParam } from '@nestjs/swagger';
+import { Observable } from 'rxjs';
+
 
 @Controller('table')
 export class TableController {
     constructor(private readonly tableService: TableService) { }
     @Post()
     @HttpCode(204)
-    async createTable( @Body() dto: CreateTableDto) {
+    async createTable(@Body() dto: CreateTableDto) {
         return (await this.tableService.createTable(dto));
     }
 
@@ -22,21 +24,30 @@ export class TableController {
             }));
     }
 
-    @Get(':id')
-    @ApiImplicitParam({name:'id'})
+    @Get('check/:id')
+    @ApiImplicitParam({ name: 'id' })
     @HttpCode(200)
-    async findTable( @Param() params ): Promise<Table[]> {
+    @HttpCode(200)
+    async check(@Param() params): Promise<any[]> {
+        console.log(params)
+        return (await this.tableService.checkTable(params.id));
+    }
+
+    @Get(':id')
+    @ApiImplicitParam({ name: 'id' })
+    @HttpCode(200)
+    async findTable(@Param() params): Promise<Table[]> {
         return (await this.tableService.findTable(params.id));
     }
 
     @Put(':id')
-    @ApiImplicitParam({name:'id'})
+    @ApiImplicitParam({ name: 'id' })
     async editTable(@Param() params, @Body() dto: CreateTableDto): Promise<Table> {
         return (await this.tableService.editTable(params.id, dto));
     }
 
     @Delete(':id')
-    @ApiImplicitParam({name:'id'})
+    @ApiImplicitParam({ name: 'id' })
     async deleteTable(@Param() idTable): Promise<Table[]> {
         return (await this.tableService.deleteTable(idTable));
     }

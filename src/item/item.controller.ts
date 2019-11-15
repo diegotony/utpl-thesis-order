@@ -18,10 +18,19 @@ export class ItemController {
     @HttpCode(200)
     async findAll(): Promise<any[]> {
       return (await this.itemService.findItems());
-      // .map(v => ({
-      //   name: v.name, description: v.description, price: v.price, catalog: v.catalog,
-      // }));
     }
+
+
+
+    
+    // @Get()
+    // @HttpCode(200)
+    // findAll(): Observable<any[]> {
+    //   return of([this.itemService.findItems()]);
+    //   // .map(v => ({
+    //   //   name: v.name, description: v.description, price: v.price, catalog: v.catalog,
+    //   // }));
+    // }
 
     
     @Get(':id')
