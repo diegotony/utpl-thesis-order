@@ -1,5 +1,4 @@
 FROM node:alpine 
-# FROM node:carbon-alpine 
 MAINTAINER diegotony
 COPY . /app
 WORKDIR ./app
