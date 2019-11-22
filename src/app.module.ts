@@ -14,13 +14,13 @@ import { TerminusOptionsService } from "./services/terminus-options/terminus-opt
   imports: [
     MongooseModule.forRoot(
       "mongodb://" + config.MONGO_HOST + "/" + config.MONGO_DB,
-      { useNewUrlParser: true }
+      { useNewUrlParser: true,useUnifiedTopology: true  }
     ),
     ItemModule,
     CatalogModule,
     TableModule,
     OrderModule,
-    TerminusModule.forRootAsync({useClass: TerminusOptionsService})
+    // TerminusModule.forRootAsync({useClass: TerminusOptionsService})
   ],
   controllers: [AppController],
   providers: [AppService]
