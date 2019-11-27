@@ -7,7 +7,7 @@ import { MessagePattern, ClientProxy, ClientProxyFactory, Transport, Client } fr
 
 @Injectable()
 export class OrderService {
-  // private clientProxy: ClientProxy;
+  // private clientProxy: ClientProxy;                                                                                                                                                                                                                                                                                                                                                                                                          
   constructor(@InjectModel("Order") private readonly orderModel: Model<CreateOrderDto>) {
     // this.clientProxy = ClientProxyFactory.create({
     //   transport: Transport.REDIS, options: {
