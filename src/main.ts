@@ -6,11 +6,9 @@ import {OPTIONS} from './main-optinos';
 async function bootstrap() {
 
   // const redis = await NestFactory.createMicroservice(AppModule, OPTIONS);
-
-
   // redis.listen(() => console.log('Microservice is listening'));
 
-
+  
   const web = await NestFactory.create(AppModule);
   let cors = require('cors');
   web.use(cors());
