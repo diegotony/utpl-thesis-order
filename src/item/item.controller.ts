@@ -9,7 +9,7 @@ export class ItemController {
     constructor(private readonly itemService: ItemService) { }
     
     @Post()
-    @HttpCode(204)
+    @HttpCode(200)
     async createItem(@Body() dto: CreateItemDto) {
       return (await this.itemService.createItem(dto));
     }

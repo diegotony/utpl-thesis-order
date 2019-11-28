@@ -7,7 +7,7 @@ import { CatalogService } from './catalog.service';
 export class CatalogController {
     constructor(private readonly catalogService: CatalogService){}
     @Post()
-    @HttpCode(204)
+    @HttpCode(200)
     async createCatalog(@Body() dto: CreateCatalogDto) {
       return (await this.catalogService.createCatalog(dto));
     }

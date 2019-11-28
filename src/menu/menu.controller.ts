@@ -8,7 +8,7 @@ export class MenuController {
     constructor(private readonly menuService: MenuService) { }
 
     @Post()
-    @HttpCode(204)
+    @HttpCode(200)
     async createMenu(@Body() dto: CreateMenuDto) {
         return (await this.menuService.createMenu(dto));
     }
