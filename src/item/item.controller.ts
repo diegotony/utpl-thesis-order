@@ -4,7 +4,7 @@ import { Item} from '../../shared/dto/item/item.dto';
 import { ItemService } from './item.service';
 import { ApiImplicitParam } from '@nestjs/swagger';
 
-@Controller('item')
+@Controller('api-order/item')
 export class ItemController {
     constructor(private readonly itemService: ItemService) { }
     

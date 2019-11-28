@@ -3,7 +3,7 @@ import {CreateCatalogDto} from '../../shared/dto/catalog/create-catalog.dto';
 import {Catalog} from '../../shared/dto/catalog/catalog.dto';
 import { CatalogService } from './catalog.service';
 
-@Controller('catalog')
+@Controller('api-order/catalog')
 export class CatalogController {
     constructor(private readonly catalogService: CatalogService){}
     @Post()
