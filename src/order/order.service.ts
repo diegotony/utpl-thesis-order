@@ -57,4 +57,18 @@ export class OrderService {
       runValidators: true
     });
   }
+
+  async updateStatusPaypal(idOrder: string) {
+    return await this.orderModel.findByIdAndUpdate(idOrder, {'pago':'Completado'}, {
+      new: true,
+      runValidators: true
+    });
+  }
+
+  async updateStatusNormal(idOrder: string) {
+    return await this.orderModel.findByIdAndUpdate(idOrder, {'pago':'Pendiente'}, {
+      new: true,
+      runValidators: true
+    });
+  }
 }

@@ -6,7 +6,7 @@ import { ApiImplicitParam } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
 
 
-@Controller('api-order/table')
+@Controller('table')
 export class TableController {
     constructor(private readonly tableService: TableService) { }
     @Post()

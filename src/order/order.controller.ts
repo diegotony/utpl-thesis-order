@@ -4,7 +4,7 @@ import { CreateOrderDto } from '../../shared/dto/order/create-order.dto';
 import { Order } from '../../shared/dto/order/order.dto';
 import { ApiImplicitParam } from '@nestjs/swagger';
 
-@Controller('api-order/order')
+@Controller('decree')
 export class OrderController {
     constructor(private readonly orderService: OrderService) { }
 
@@ -40,4 +40,18 @@ export class OrderController {
     async deleteOrder(@Param() params): Promise<Order[]> {
         return (await this.orderService.deleteOrder(params.id));
     }
+
+    // @Put(':id')
+    // @ApiImplicitParam({name:'id'})
+    // @HttpCode(202)
+    // async updatePaypal(@Param() params) {
+    //     return (await this.orderService.updateStatusPaypal(params.id));
+    // }
+
+    // @Put(':id')
+    // @ApiImplicitParam({name:'id'})
+    // @HttpCode(202)
+    // async updateNormal(@Param() params) {
+    //     return (await this.orderService.updateStatusNormal(params.id));
+    // }
 }

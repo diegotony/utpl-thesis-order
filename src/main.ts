@@ -20,7 +20,7 @@ async function bootstrap() {
     .addTag('order')
     .build();
   const document = SwaggerModule.createDocument(web, options);
-  SwaggerModule.setup('api/order', web, document);
+  SwaggerModule.setup('swagger/order', web, document);
 
   await web.listen(config.PORT);
   // 3037

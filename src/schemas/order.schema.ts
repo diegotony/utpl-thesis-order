@@ -5,7 +5,9 @@ export const OrderSchema = new mongoose.Schema({
   id_table: { type: mongoose.Schema.Types.ObjectId ,required:true},
   date: { type: Date, default: Date.now,required:true },
   order : {type: Array,required:true},
-  pago : {type: String,required:true},
-  status : {type: Boolean, default:false}
+  pago : {type: String,required:true, default:"No Pagado"},
+  entrega : {type: String,required:true, default:"Pendiente"},
+  total : {type: Number,required:true},
+
 
 });
