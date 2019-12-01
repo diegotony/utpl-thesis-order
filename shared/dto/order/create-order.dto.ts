@@ -7,7 +7,7 @@ export class CreateOrderDto {
     id_table: string;
     @ApiModelProperty()
     order: Array<any>;
-    @ApiModelProperty()
+    @ApiModelProperty({enum:['Completado','Pendiente']})
     pago: string;
     @ApiModelProperty()
     total: number;

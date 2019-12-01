@@ -3,10 +3,23 @@ import { OrderService } from './order.service';
 import { CreateOrderDto } from '../../shared/dto/order/create-order.dto';
 import { Order } from '../../shared/dto/order/order.dto';
 import { ApiImplicitParam } from '@nestjs/swagger';
+import { MessagePattern, EventPattern } from '@nestjs/microservices';
 
 @Controller('decree')
 export class OrderController {
     constructor(private readonly orderService: OrderService) { }
+
+
+    @MessagePattern('test')
+    async test(data:string){
+        console.log(data)
+        return data
+    }
+
+    @EventPattern('stateOrder')
+    async test2(data:string){
+        this.orderService.updateStatusPaypal(data)
+    }
 
     @Post()
     @HttpCode(201)
@@ -41,17 +54,4 @@ export class OrderController {
         return (await this.orderService.deleteOrder(params.id));
     }
 
-    // @Put(':id')
-    // @ApiImplicitParam({name:'id'})
-    // @HttpCode(202)
-    // async updatePaypal(@Param() params) {
-    //     return (await this.orderService.updateStatusPaypal(params.id));
-    // }
-
-    // @Put(':id')
-    // @ApiImplicitParam({name:'id'})
-    // @HttpCode(202)
-    // async updateNormal(@Param() params) {
-    //     return (await this.orderService.updateStatusNormal(params.id));
-    // }
 }

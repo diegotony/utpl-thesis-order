@@ -3,17 +3,10 @@ import { Injectable, HttpException, HttpStatus, Inject } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Order } from "../../shared/dto/order/order.dto";
 import { CreateOrderDto } from "../../shared/dto/order/create-order.dto";
-import { MessagePattern, ClientProxy, ClientProxyFactory, Transport, Client } from '@nestjs/microservices';
 
 @Injectable()
-export class OrderService {
-  // private clientProxy: ClientProxy;                                                                                                                                                                                                                                                                                                                                                                                                          
+export class OrderService {                                                                                                                                                                                                                                                                                                                                                                                                        
   constructor(@InjectModel("Order") private readonly orderModel: Model<CreateOrderDto>) {
-    // this.clientProxy = ClientProxyFactory.create({
-    //   transport: Transport.REDIS, options: {
-    //     url: 'redis://localhost:6379'
-    //   }
-    // })
   }
 
   async createOrder(createOrderDto: CreateOrderDto): Promise<Order> {
@@ -22,6 +15,7 @@ export class OrderService {
       order.id_table = createOrderDto.id_table;
       order.id_user = createOrderDto.id_user;
       order.order = createOrderDto.order;
+      order.total = createOrderDto.total;
       console.log(order)
       console.log(createOrderDto)
 
@@ -65,10 +59,4 @@ export class OrderService {
     });
   }
 
-  async updateStatusNormal(idOrder: string) {
-    return await this.orderModel.findByIdAndUpdate(idOrder, {'pago':'Pendiente'}, {
-      new: true,
-      runValidators: true
-    });
-  }
 }

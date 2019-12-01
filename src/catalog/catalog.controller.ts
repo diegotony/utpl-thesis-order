@@ -16,9 +16,6 @@ export class CatalogController {
     @HttpCode(200)
     async findAll(): Promise<any[]> {
       return (await this.catalogService.findCatalogs());
-      // .map(v => ({
-      //   _id: v._id, name: v.name,
-      // }));
     }
 
     @Get(':id')

@@ -3,10 +3,22 @@ import { AppModule } from './app.module';
 import config from './config/config';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import {OPTIONS} from './main-optinos';
+import { Transport } from '@nestjs/microservices';
 async function bootstrap() {
 
-  // const redis = await NestFactory.createMicroservice(AppModule, OPTIONS);
-  // redis.listen(() => console.log('Microservice is listening'));
+  const redis = await NestFactory.createMicroservice(AppModule, 
+    {
+      transport: Transport.REDIS,
+      // options:{
+      //   host:"127.0.0.1",
+      //   port:8877
+      // }
+      options:{
+        url:'redis://localhost:6379',
+      }
+    }
+    );
+  redis.listen(() => console.log('Order-Microservice is listening'));
 
   
   const web = await NestFactory.create(AppModule);
@@ -23,7 +35,6 @@ async function bootstrap() {
   SwaggerModule.setup('swagger/order', web, document);
 
   await web.listen(config.PORT);
-  // 3037
 
 
 
