@@ -2,19 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import config from './config/config';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import {OPTIONS} from './main-optinos';
 import { Transport } from '@nestjs/microservices';
 async function bootstrap() {
 
   const redis = await NestFactory.createMicroservice(AppModule, 
     {
       transport: Transport.REDIS,
-      // options:{
-      //   host:"127.0.0.1",
-      //   port:8877
-      // }
       options:{
-        url:'redis://localhost:6379',
+        url:'redis://'+config.REDIS_HOST+':6379',
       }
     }
     );
