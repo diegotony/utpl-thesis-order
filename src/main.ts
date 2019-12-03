@@ -9,7 +9,7 @@ async function bootstrap() {
     {
       transport: Transport.REDIS,
       options:{
-        url:'redis://'+config.REDIS_HOST+':6379',
+        url:'redis://localhost:6379',
       }
     }
     );
@@ -17,21 +17,17 @@ async function bootstrap() {
 
   
   const web = await NestFactory.create(AppModule);
-  let cors = require('cors');
-  web.use(cors());
-
   const options = new DocumentBuilder()
     .setTitle('Order Service')
     .setDescription('The order API description')
     .setVersion('1.0')
     .addTag('order')
     .build();
+
   const document = SwaggerModule.createDocument(web, options);
   SwaggerModule.setup('swagger/order', web, document);
 
   await web.listen(config.PORT);
-
-
 
 }
 bootstrap();
