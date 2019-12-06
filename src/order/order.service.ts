@@ -19,7 +19,7 @@ export class OrderService {
       console.log(order)
       console.log(createOrderDto)
 
-      const createdOrder = new this.orderModel(order);
+      const createdOrder = new this.orderModel(createOrderDto);
 
       if (!createdOrder) {
         throw new HttpException("Upps error ..", HttpStatus.BAD_REQUEST);
