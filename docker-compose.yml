@@ -12,7 +12,7 @@ services:
       - web-net
   redis_db:
     image: 'redis:alpine'
-    container_name: redis_db
+    container_name: redis
     restart: always
     ports:
       - "6379:6379"
@@ -20,11 +20,11 @@ services:
       - web-net
   order-service:
     restart: always
-    image: diegotony/order-micro:latest
-    # build: ./
+    # image: diegotony/order-micro:latest
+    build: ./
     environment:
-      - MONGO_URI=mongodb://mongo_db:27017/order
-      - REDIS_URI=redis://redis_db:6379
+      - MONGO_HOST=mongo_db
+      - REDIS_HOST=redis
     depends_on:
       - mongo_db
       - redis_db

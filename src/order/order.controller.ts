@@ -21,15 +21,6 @@ export class OrderController {
         return await this.orderService.findOrder(id_order)
     }
 
-    // @MessagePattern('oka')
-    // async oka(id_order) {
-    //     console.log(id_order)
-    //     return await id_order
-    // }
-
-
-
-
     @Post()
     @HttpCode(201)
     async createOrder(@Body() dto: CreateOrderDto) {
