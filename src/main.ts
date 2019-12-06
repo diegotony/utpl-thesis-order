@@ -23,7 +23,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('order')
     .build();
-
+  web.enableCors();
   const document = SwaggerModule.createDocument(web, options);
   SwaggerModule.setup('swagger/order', web, document);
 

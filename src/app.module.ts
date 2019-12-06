@@ -10,9 +10,12 @@ import { OrderModule } from "./order/order.module";
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      "mongodb://" + config.MONGO_HOST + "/" + config.MONGO_DB,
-      { useNewUrlParser: true,useUnifiedTopology: true  }
+    MongooseModule.forRootAsync(
+      {
+        useFactory:() =>({
+          uri : "mongodb://" + config.MONGO_HOST + "/" + config.MONGO_DB
+        })
+      }
     ),
     ItemModule,
     CatalogModule,
