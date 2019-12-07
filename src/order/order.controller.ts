@@ -9,11 +9,23 @@ import { MessagePattern, EventPattern, Ctx, RedisContext } from '@nestjs/microse
 export class OrderController {
     constructor(private readonly orderService: OrderService) { }
 
+    @EventPattern('holiEvent')
+    async holiEvent() {
+        console.log("holi")
+    }
+
+    @MessagePattern('holiPattern' )
+    async holiPattern(): Promise<any> {
+        // console.log("pattern")
+        return await "holi pssttern"
+    }
+
+
     @EventPattern('stateOrder')
     async test2(data: string) {
         this.orderService.updateStatusPaypal(data)
     }
-
+    
 
     @MessagePattern('findOrder' )
     async findById(id_order: string): Promise<any> {
