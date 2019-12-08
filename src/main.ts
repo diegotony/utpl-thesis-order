@@ -21,7 +21,7 @@ async function bootstrap() {
     .setTitle('Order Service')
     .setDescription('The order API description')
     .setVersion('1.0')
-    .addTag('order')
+    .addTag('decree')
     .build();
   web.enableCors();
   const document = SwaggerModule.createDocument(web, options);

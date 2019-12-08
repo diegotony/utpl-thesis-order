@@ -1,7 +1,10 @@
 import { Controller, Get, HttpCode } from "@nestjs/common";
 import { AppService } from "./app.service";
+import { ApiUseTags } from "@nestjs/swagger";
 
-@Controller("api-order")
+
+@ApiUseTags()
+@Controller()
 export class AppController{
   constructor(private readonly appService: AppService){} 
   @Get()

@@ -2,10 +2,10 @@ import { Controller, Get, Post, Put, Delete, Param, HttpCode, Body } from '@nest
 import { TableService } from './table.service';
 import { CreateTableDto } from '../../shared/dto/table/create-table.dto';
 import { Table } from '../../shared/dto/table/table.dto';
-import { ApiImplicitParam } from '@nestjs/swagger';
+import { ApiImplicitParam, ApiUseTags } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
 
-
+@ApiUseTags('table')
 @Controller('table')
 export class TableController {
     constructor(private readonly tableService: TableService) { }

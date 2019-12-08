@@ -2,9 +2,10 @@ import { Controller, Get, Post, Put, Delete, Param, HttpCode, Body, UseFilters }
 import { OrderService } from './order.service';
 import { CreateOrderDto } from '../../shared/dto/order/create-order.dto';
 import { Order } from '../../shared/dto/order/order.dto';
-import { ApiImplicitParam } from '@nestjs/swagger';
+import { ApiImplicitParam, ApiUseTags } from '@nestjs/swagger';
 import { MessagePattern, EventPattern, Ctx, RedisContext } from '@nestjs/microservices';
 
+@ApiUseTags('decree')
 @Controller('decree')
 export class OrderController {
     constructor(private readonly orderService: OrderService) { }

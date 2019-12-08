@@ -13,11 +13,11 @@ export class OrderService {
     try {
       const order = new CreateOrderDto();
       order.id_table = createOrderDto.id_table;
-      order.id_user = createOrderDto.id_user;
+      order.id_client = createOrderDto.id_client;
       order.order = createOrderDto.order;
       order.total = createOrderDto.total;
       console.log(order)
-      console.log(createOrderDto)
+      // console.log(createOrderDto)
 
       const createdOrder = new this.orderModel(order);
 

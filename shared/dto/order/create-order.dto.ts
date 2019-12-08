@@ -2,7 +2,7 @@ import { ApiModelProperty } from "@nestjs/swagger";
 
 export class CreateOrderDto {
     @ApiModelProperty()
-    id_user: string;
+    id_client: string;
     @ApiModelProperty()
     id_table: string;
     @ApiModelProperty()

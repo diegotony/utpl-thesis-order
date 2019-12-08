@@ -2,8 +2,11 @@ import { Controller, Get, Post, Put, Delete, Param, HttpCode, Body } from '@nest
 import { CreateItemDto} from '../../shared/dto/item/create-item.dto';
 import { Item} from '../../shared/dto/item/item.dto';
 import { ItemService } from './item.service';
-import { ApiImplicitParam } from '@nestjs/swagger';
+import { ApiImplicitParam, ApiUseTags } from '@nestjs/swagger';
 
+
+
+@ApiUseTags('item')
 @Controller('item')
 export class ItemController {
     constructor(private readonly itemService: ItemService) { }
@@ -19,18 +22,6 @@ export class ItemController {
     async findAll(): Promise<any[]> {
       return (await this.itemService.findItems());
     }
-
-
-
-    
-    // @Get()
-    // @HttpCode(200)
-    // findAll(): Observable<any[]> {
-    //   return of([this.itemService.findItems()]);
-    //   // .map(v => ({
-    //   //   name: v.name, description: v.description, price: v.price, catalog: v.catalog,
-    //   // }));
-    // }
 
     
     @Get(':id')
