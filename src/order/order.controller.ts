@@ -23,7 +23,8 @@ export class OrderController {
 
 
     @EventPattern('stateOrder')
-    async test2(data: string) {
+    async stateOrder(data:any) {
+        console.log(data)
         this.orderService.updateStatusPaypal(data)
     }
     
