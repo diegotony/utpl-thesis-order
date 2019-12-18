@@ -1,4 +1,4 @@
-FROM node:alpine 
+FROM node:carbon-alpine3.9
 MAINTAINER diegotony
 COPY . /app
 WORKDIR ./app
