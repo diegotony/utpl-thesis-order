@@ -12,7 +12,7 @@ services:
 
 
 before_install:
-  - 'chmod +x .travis/main.sh'
+#  - 'chmod +x .travis/main.sh'
   - './.travis/main.sh'
 
 script:
