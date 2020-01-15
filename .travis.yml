@@ -3,11 +3,11 @@ dist: trusty
 services:
   - 'docker'
 
-addons:
-  sonarcloud:
-    organization: "diegotony"
-    token:
-      secure: "dVYwkc4N3UVoLEiGmsRv8/cI244ldRdzUO3s/CjUfDh5VacUdFF7L3VKGbJfEpwIW2ddKt4OrxMEDYuBKa6WuWKVjQMTuBeBmEwbj16jqmd78fUV7y6OmJEj83IVwvv3B1yN069xKZoRS+yDUh9C0n5qggyMzJee+bBMFHNoNH33U9c7CGHpuqfAcZb4yBiyBphmEBALyt3u/05Jzxj/Qapj9FEn90pj08lLpSnmBpw9pw0xI9es/zqVODxlULvqbt90pnmM9jDUOGGSnRgRYnvJeLQde8pYOLRIrnVnK7yU0NCP0ekHYtxXyqiu5K6bs9xSTqBAoZiuGUZojGcQ3Kp7VCL/VUs4LKsG65EjB4ZtlrDcT3iE266+sAqyfh0cTwn2NXmkYTImKG7xFbvStjMvwpO+47zohdiZ9WC/shpfxLnHDofwhoBjyCX0kbm96nWypX87OA51SVAhw1Q17CIJi5WKp+/29UGSl4zJG33ckGtNTrUj206zvlyMktWLAGRKzCR7WkkLvN0SpUAzMRpql9RZoDLTNSFqZhPX0MnR6zs5+RJxvIjTmqX02Lpylln6SgCY3bew7wQcIAMT9YYaJkuDGEiUb9wdZ4aFo+IKM/rExD4SiAKVl8wAYj7UWf9ITtZXyKd5evD2tFWQqN9GI2QmED4xMOyHTlZ3v3w=" # encrypted value of your token
+#addons:
+#  sonarcloud:
+#    organization: "diegotony"
+#    token:
+#      secure: "dVYwkc4N3UVoLEiGmsRv8/cI244ldRdzUO3s/CjUfDh5VacUdFF7L3VKGbJfEpwIW2ddKt4OrxMEDYuBKa6WuWKVjQMTuBeBmEwbj16jqmd78fUV7y6OmJEj83IVwvv3B1yN069xKZoRS+yDUh9C0n5qggyMzJee+bBMFHNoNH33U9c7CGHpuqfAcZb4yBiyBphmEBALyt3u/05Jzxj/Qapj9FEn90pj08lLpSnmBpw9pw0xI9es/zqVODxlULvqbt90pnmM9jDUOGGSnRgRYnvJeLQde8pYOLRIrnVnK7yU0NCP0ekHYtxXyqiu5K6bs9xSTqBAoZiuGUZojGcQ3Kp7VCL/VUs4LKsG65EjB4ZtlrDcT3iE266+sAqyfh0cTwn2NXmkYTImKG7xFbvStjMvwpO+47zohdiZ9WC/shpfxLnHDofwhoBjyCX0kbm96nWypX87OA51SVAhw1Q17CIJi5WKp+/29UGSl4zJG33ckGtNTrUj206zvlyMktWLAGRKzCR7WkkLvN0SpUAzMRpql9RZoDLTNSFqZhPX0MnR6zs5+RJxvIjTmqX02Lpylln6SgCY3bew7wQcIAMT9YYaJkuDGEiUb9wdZ4aFo+IKM/rExD4SiAKVl8wAYj7UWf9ITtZXyKd5evD2tFWQqN9GI2QmED4xMOyHTlZ3v3w=" # encrypted value of your token
 
 
 
@@ -29,4 +29,4 @@ after_success:
 # don't notify me when things fail
 
 notifications:
-  email: false
+  email: true
