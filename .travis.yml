@@ -12,11 +12,11 @@ services:
 
 
 before_install:
-#  - 'chmod +x .travis/main.sh'
+  - 'chmod +x .travis/main.sh'
   - './.travis/main.sh'
 
 script:
-  - sonar-scanner
+#  - sonar-scanner
   - 'make test'
   - 'make image'
 
