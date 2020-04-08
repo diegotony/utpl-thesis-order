@@ -1,11 +1,14 @@
 # utpl-thesis-order
+## Dockerfile
 Especificaciones para levantar el Servicio:
 ```
-# Asignar estas varibales de entorno en Docker
+# Asignar estas varibales de entorno en Dockerfile
 MONGO_HOST=url_mongo_db
 REDIS_HOST=url_redis
+PORT=port
 ```
-Para levantar el servicio localmente
+## Docker-Compose 
+Puedes levantar el servicio localmente con el siguiente comando
 ```
 docker-compose up
 ```
