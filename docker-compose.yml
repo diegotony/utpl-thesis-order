@@ -25,12 +25,15 @@ services:
     environment:
       - MONGO_HOST=mongo_db
       - REDIS_HOST=redis
+      - PORT=3037
     depends_on:
       - mongo_db
       - redis_db
     links:
       - mongo_db
       - redis_db
+    ports:
+        - "3037:3037"
     networks:
       - web-net
 
