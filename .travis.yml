@@ -7,8 +7,7 @@ jobs:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t diegotony/client-micro .
       - docker images
-      - docker tag client-micro $DOCKER_USERNAME/client-micro
-      - docker push $DOCKER_USERNAME/client-micro
+      - docker push $DOCKER_USERNAME/client-micro:latest
     - stage: test
-      script: docker run --rm $DOCKER_USERNAME/client-micro
-    - script: docker run --rm $DOCKER_USERNAME/client-micro
+      script: docker run --rm $DOCKER_USERNAME/client-micro:latest
+    - script: docker run --rm $DOCKER_USERNAME/client-micro:latest
