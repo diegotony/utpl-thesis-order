@@ -8,6 +8,3 @@ jobs:
       - docker build -t diegotony/client-micro .
       - docker images
       - docker push $DOCKER_USERNAME/client-micro:latest
-    - stage: test
-      script: docker run --rm $DOCKER_USERNAME/client-micro:latest
-    - script: docker run --rm $DOCKER_USERNAME/client-micro:latest
