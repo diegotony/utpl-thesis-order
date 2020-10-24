@@ -1,5 +1,9 @@
 dist: trusty
 
+branches:
+  only:
+  - develop
+
 jobs:
   include:
     - stage: build docker image
