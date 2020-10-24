@@ -1,9 +1,7 @@
 dist: trusty
 
-branches:
-  only:
-  - develop
-  - master
+services:
+  - docker
 
 jobs:
   include:
