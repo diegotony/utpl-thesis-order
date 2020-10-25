@@ -9,7 +9,7 @@ jobs:
   include:
     - stage: build docker image
       script:
-      - docker build -t diegotony/order-micro .
+      - docker build -t diegotony/orden-micro .
       after_success:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker push $DOCKER_USERNAME/order-micro:latest
+      - docker push $DOCKER_USERNAME/orden-micro:latest
